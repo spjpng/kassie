@@ -9,10 +9,20 @@
         {%- endif -%}
       </div>
       <div class="about__text">
+        {%- assign booking_tag = section.settings.booking_tag | default: 'booking' -%}
+        {%- assign is_booking = false -%}
+        {%- if product.tags contains booking_tag -%}{%- assign is_booking = true -%}{%- endif -%}
+        {%- assign deposit_note = product.metafields.custom.deposit_note | default: section.settings.deposit_note -%}
+
         <h1>{{ product.title }}</h1>
         <p class="product-card__price" style="font-size:1.4rem" data-price>
           {{ product.selected_or_first_available_variant.price | money }}
+          {%- if is_booking -%}<span class="deposit-tag">deposit</span>{%- endif -%}
         </p>
+
+        {%- if is_booking and deposit_note != blank -%}
+          <p class="booking-note">{{ deposit_note }}</p>
+        {%- endif -%}
 
         {%- form 'product', product, id: 'ProductForm' -%}
           {%- unless product.has_only_default_variant -%}
@@ -28,17 +38,41 @@
             {%- endfor -%}
           {%- endunless -%}
 
+          {%- if is_booking -%}
+            <div class="field">
+              <label for="BookDate">Preferred date</label>
+              <input type="date" id="BookDate" name="properties[Preferred date]" required>
+            </div>
+            <div class="field">
+              <label for="BookTime">Preferred time</label>
+              <input type="time" id="BookTime" name="properties[Preferred time]" required>
+            </div>
+            <div class="field">
+              <label for="BookNotes">Notes (style, length, inspo, phone)</label>
+              <textarea id="BookNotes" name="properties[Notes]" rows="3"></textarea>
+            </div>
+          {%- endif -%}
+
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-id>
+          {%- if is_booking -%}
+            {%- assign add_label = section.settings.booking_button_label | default: 'Book & pay deposit' -%}
+          {%- else -%}
+            {%- assign add_label = 'products.add_to_cart' | t -%}
+          {%- endif -%}
           <button
             type="submit"
             name="add"
             class="btn btn--primary"
             data-add-button
-            data-add-text="{{ 'products.add_to_cart' | t }}"
+            data-add-text="{{ add_label | escape }}"
             data-sold-text="{{ 'products.sold_out' | t }}"
             {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
-            {%- if product.selected_or_first_available_variant.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+            {%- if product.selected_or_first_available_variant.available -%}{{ add_label }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
           </button>
+
+          {%- if is_booking -%}
+            <p class="booking-note booking-note--small">You’ll pay the deposit at checkout to secure your spot. {{ shop.name }} will confirm your appointment time.</p>
+          {%- endif -%}
 
           <script type="application/json" data-variants>
             [
@@ -60,6 +94,34 @@
 {% schema %}
 {
   "name": "Product",
-  "settings": []
+  "settings": [
+    {
+      "type": "header",
+      "content": "Booking (service products)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Tag a product with the booking tag below to turn its page into a deposit + date/time request. The price is the deposit; the requested date/time are saved on the order."
+    },
+    {
+      "type": "text",
+      "id": "booking_tag",
+      "label": "Booking product tag",
+      "default": "booking"
+    },
+    {
+      "type": "text",
+      "id": "booking_button_label",
+      "label": "Booking button label",
+      "default": "Book & pay deposit"
+    },
+    {
+      "type": "textarea",
+      "id": "deposit_note",
+      "label": "Deposit note",
+      "info": "Shown on booking products. Per-product override: metafield custom.deposit_note.",
+      "default": "A non-refundable deposit secures your appointment and goes toward your total. Balance due at your visit."
+    }
+  ]
 }
 {% endschema %}
