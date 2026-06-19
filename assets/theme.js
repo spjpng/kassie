@@ -67,9 +67,53 @@
     sync();
   }
 
+  // Product variant selection: keep variant id, price and availability in sync
+  function initProductForm(form) {
+    var dataEl = form.querySelector('[data-variants]');
+    var selects = form.querySelectorAll('[data-option-selector]');
+    if (!dataEl || selects.length === 0) return; // single-variant: server value is correct
+
+    var variants;
+    try { variants = JSON.parse(dataEl.textContent); } catch (e) { return; }
+
+    var idInput = form.querySelector('[data-variant-id]');
+    var priceEl = form.parentNode.querySelector('[data-price]');
+    var btn = form.querySelector('[data-add-button]');
+
+    function update() {
+      var chosen = Array.prototype.map.call(selects, function (s) { return s.value; });
+      var match = null;
+      for (var i = 0; i < variants.length; i++) {
+        var v = variants[i];
+        if (v.options.length === chosen.length && v.options.every(function (o, idx) { return o === chosen[idx]; })) {
+          match = v;
+          break;
+        }
+      }
+      if (match) {
+        if (idInput) idInput.value = match.id;
+        if (priceEl) priceEl.textContent = match.price;
+        if (btn) {
+          btn.disabled = !match.available;
+          btn.textContent = match.available ? btn.dataset.addText : btn.dataset.soldText;
+        }
+      } else if (btn) {
+        btn.disabled = true;
+        btn.textContent = btn.dataset.soldText;
+      }
+    }
+
+    Array.prototype.forEach.call(selects, function (s) { s.addEventListener('change', update); });
+    update();
+  }
+
   function init() {
     document.querySelectorAll('[data-ba]').forEach(initCompare);
     document.querySelectorAll('.slider').forEach(initSlider);
+    document.querySelectorAll('[data-variants]').forEach(function (el) {
+      var form = el.closest('form');
+      if (form) initProductForm(form);
+    });
   }
 
   if (document.readyState === 'loading') {

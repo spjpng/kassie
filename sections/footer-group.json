@@ -3,7 +3,18 @@
   "name": "Footer group",
   "sections": {
     "footer": {
-      "type": "footer"
+      "type": "footer",
+      "blocks": {
+        "services": { "type": "link", "settings": { "label": "Services", "url": "/pages/services" } },
+        "gallery": { "type": "link", "settings": { "label": "Gallery", "url": "/pages/gallery" } },
+        "about": { "type": "link", "settings": { "label": "About", "url": "/pages/about" } },
+        "policies": { "type": "link", "settings": { "label": "Policies", "url": "/pages/policies" } },
+        "contact": { "type": "link", "settings": { "label": "Contact", "url": "/pages/contact" } }
+      },
+      "block_order": ["services", "gallery", "about", "policies", "contact"],
+      "settings": {
+        "menu_title": "Explore"
+      }
     }
   },
   "order": ["footer"]

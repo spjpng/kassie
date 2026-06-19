@@ -12,8 +12,9 @@
     "color_button_text": "#0a0a0a",
     "font_heading": "assistant_n4",
     "font_body": "assistant_n4",
-    "location_text": "By appointment only",
-    "business_hours": "Mon–Fri: 9am–7pm\nSat: 9am–5pm\nSun: Closed"
+    "location_text": "Delaware State University x New Castle",
+    "business_hours": "Mon–Sat: 9am–10pm\nSun: Closed",
+    "instagram_url": "https://www.instagram.com/theecbstylez/"
   },
   "presets": {
     "Default": {}

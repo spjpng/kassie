@@ -10,14 +10,16 @@
       </div>
       <div class="about__text">
         <h1>{{ product.title }}</h1>
-        <p class="product-card__price" style="font-size:1.4rem">{% render 'price', product: product %}</p>
+        <p class="product-card__price" style="font-size:1.4rem" data-price>
+          {{ product.selected_or_first_available_variant.price | money }}
+        </p>
 
         {%- form 'product', product, id: 'ProductForm' -%}
           {%- unless product.has_only_default_variant -%}
             {%- for option in product.options_with_values -%}
               <div class="field">
                 <label for="Option-{{ option.position }}">{{ option.name }}</label>
-                <select id="Option-{{ option.position }}" name="options[{{ option.name | escape }}]">
+                <select id="Option-{{ option.position }}" name="options[{{ option.name | escape }}]" data-option-selector>
                   {%- for value in option.values -%}
                     <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
                   {%- endfor -%}
@@ -26,10 +28,25 @@
             {%- endfor -%}
           {%- endunless -%}
 
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <button type="submit" name="add" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
-            {%- if product.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-id>
+          <button
+            type="submit"
+            name="add"
+            class="btn btn--primary"
+            data-add-button
+            data-add-text="{{ 'products.add_to_cart' | t }}"
+            data-sold-text="{{ 'products.sold_out' | t }}"
+            {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+            {%- if product.selected_or_first_available_variant.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
           </button>
+
+          <script type="application/json" data-variants>
+            [
+              {%- for variant in product.variants -%}
+                {"id": {{ variant.id }}, "options": {{ variant.options | json }}, "available": {{ variant.available }}, "price": {{ variant.price | money | json }}}{%- unless forloop.last -%},{%- endunless -%}
+              {%- endfor -%}
+            ]
+          </script>
         {%- endform -%}
 
         {%- if product.description != blank -%}
