@@ -22,11 +22,19 @@
 
     {%- paginate collection.products by 12 -%}
       {%- if collection.products.size > 0 -%}
-        <div class="grid grid--4">
-          {%- for product in collection.products -%}
-            {% render 'product-card', product: product %}
-          {%- endfor -%}
-        </div>
+        {%- if section.settings.layout == 'list' -%}
+          <div class="service-list">
+            {%- for product in collection.products -%}
+              {% render 'product-row', product: product, button_label: section.settings.button_label %}
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <div class="grid grid--4">
+            {%- for product in collection.products -%}
+              {% render 'product-card', product: product %}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
 
         {%- if paginate.pages > 1 -%}
           <div class="social-cta">
@@ -45,6 +53,18 @@
 {
   "name": "Product grid",
   "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "grid", "label": "Grid (cards)" },
+        { "value": "list", "label": "List (Booksy-style rows)" }
+      ],
+      "default": "grid",
+      "info": "Use List for service-style products: photo, name, price and a Book button per row."
+    },
+    { "type": "text", "id": "button_label", "label": "List button label", "default": "Book" },
     { "type": "text", "id": "heading", "label": "Fallback heading", "default": "Shop" },
     { "type": "textarea", "id": "subheading", "label": "Subheading" },
     { "type": "link_list", "id": "filter_menu", "label": "Category filter menu", "info": "Link a menu of collections to show as filter tabs." },

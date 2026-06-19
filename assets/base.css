@@ -312,7 +312,8 @@ p { margin: 0 0 1rem; }
   border-bottom: 1px solid var(--color-border);
 }
 .service-row__media { flex: 0 0 auto; }
-.service-row__media img {
+.service-row__media img,
+.service-row__media svg {
   width: 64px;
   height: 64px;
   aspect-ratio: 1 / 1;
@@ -321,6 +322,8 @@ p { margin: 0 0 1rem; }
   border: 1px solid var(--color-border);
   display: block;
 }
+a.service-row__name { color: var(--color-text); }
+a.service-row__name:hover { color: var(--color-silver); }
 .service-row__info { flex: 1 1 auto; min-width: 0; }
 .service-row__name { font-family: var(--font-heading); font-weight: 600; }
 .service-row__meta { color: var(--color-muted); font-size: .85rem; margin-top: .15rem; }
