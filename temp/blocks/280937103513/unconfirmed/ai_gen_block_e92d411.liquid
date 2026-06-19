@@ -1,6 +1,118 @@
+{% doc %}
+  @prompt
+    Create a footer block that displays an embedded map. The block should have a setting to paste a Google Maps embed URL or iframe code, with a placeholder message shown when no map is configured yet. It should be styled to fit naturally within a footer section, with a customizable height setting and full-width display.
+{% enddoc %}
+{%- comment -%}
+  Footer Map Block
+  Displays an embedded Google Map in the footer with customizable height
+{%- endcomment -%}
+
+{%- liquid
+  assign map_embed = block.settings.map_embed
+  assign map_height = block.settings.map_height
+  assign show_placeholder = false
+  
+  if map_embed == blank
+    assign show_placeholder = true
+  endif
+-%}
+
+<div class="footer-map-block" {{ block.shopify_attributes }}>
+  {%- if show_placeholder -%}
+    <div class="footer-map-placeholder" style="height: {{ map_height }}px;">
+      <div class="footer-map-placeholder-content">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <p>Add your Google Maps embed code in the block settings</p>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="footer-map-container" style="height: {{ map_height }}px;">
+      {{ map_embed }}
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .footer-map-block {
+    width: 100%;
+    margin: 0;
+  }
+
+  .footer-map-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: {{ settings.color_surface }};
+    border: 1px solid {{ settings.color_border }};
+  }
+
+  .footer-map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .footer-map-placeholder {
+    width: 100%;
+    background-color: {{ settings.color_surface }};
+    border: 1px solid {{ settings.color_border }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-map-placeholder-content {
+    text-align: center;
+    color: {{ settings.color_muted }};
+    padding: 2rem;
+  }
+
+  .footer-map-placeholder-content svg {
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+  }
+
+  .footer-map-placeholder-content p {
+    margin: 0;
+    font-size: 0.875rem;
+    font-family: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+  }
+
+  @media (max-width: 768px) {
+    .footer-map-container,
+    .footer-map-placeholder {
+      height: 300px !important;
+    }
+  }
+</style>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Footer Map",
+  "settings": [
+    {
+      "type": "html",
+      "id": "map_embed",
+      "label": "Google Maps embed code",
+      "info": "Paste the full iframe embed code from Google Maps. Go to Google Maps > Share > Embed a map, then copy the entire iframe code."
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 200,
+      "max": 600,
+      "step": 50,
+      "unit": "px",
+      "label": "Map height",
+      "default": 400,
+      "info": "Height automatically adjusts to 300px on mobile devices"
+    }
+  ]
+}
 {% endschema %}
