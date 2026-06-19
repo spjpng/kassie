@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -7,48 +16,134 @@
         "heading": "Braids & installs, done right",
         "subheading": "Premium hair styling with a clean, modern finish. Book your appointment today.",
         "button_label": "Book now",
-        "button2_label": "View services"
+        "button_link": "",
+        "button2_label": "View services",
+        "button2_link": ""
       }
     },
     "services": {
       "type": "services-preview",
       "blocks": {
-        "s1": { "type": "service", "settings": { "title": "Knotless braids", "text": "Lightweight, natural-looking, long-lasting." } },
-        "s2": { "type": "service", "settings": { "title": "Sew-Ins", "text": "Seamless installs with a flawless finish." } },
-        "s3": { "type": "service", "settings": { "title": "Wig installs", "text": "Custom, glued or glueless, melted to perfection." } }
+        "s1": {
+          "type": "service",
+          "settings": {
+            "title": "Knotless braids",
+            "text": "Lightweight, natural-looking, long-lasting.",
+            "link": ""
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "title": "Sew-Ins",
+            "text": "Seamless installs with a flawless finish.",
+            "link": ""
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "title": "Wig installs",
+            "text": "Custom, glued or glueless, melted to perfection.",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"],
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
       "settings": {
+        "eyebrow": "Services",
         "heading": "What we do",
-        "view_all_label": "See full service menu"
+        "subheading": "",
+        "view_all_label": "See full service menu",
+        "view_all_link": "shopify://collections/all"
       }
     },
     "gallery": {
       "type": "gallery-teaser",
       "blocks": {
-        "g1": { "type": "pair", "settings": { "caption": "Knotless" } },
-        "g2": { "type": "pair", "settings": { "caption": "Sew-In" } },
-        "g3": { "type": "pair", "settings": { "caption": "Wig install" } }
+        "g1": {
+          "type": "pair",
+          "settings": {
+            "caption": "Knotless"
+          }
+        },
+        "g2": {
+          "type": "pair",
+          "settings": {
+            "caption": "Sew-In"
+          }
+        },
+        "g3": {
+          "type": "pair",
+          "settings": {
+            "caption": "Wig install"
+          }
+        }
       },
-      "block_order": ["g1", "g2", "g3"],
+      "block_order": [
+        "g1",
+        "g2",
+        "g3"
+      ],
       "settings": {
+        "eyebrow": "Gallery",
         "heading": "Before & after",
-        "button_label": "View full gallery"
+        "subheading": "",
+        "button_label": "View full gallery",
+        "button_link": ""
       }
     },
     "reviews": {
       "type": "social-proof",
       "blocks": {
-        "r1": { "type": "review", "settings": { "rating": 5, "quote": "Absolutely love my hair! So professional and clean.", "author": "Client" } },
-        "r2": { "type": "review", "settings": { "rating": 5, "quote": "Best braids I've ever had. Booking again already.", "author": "Client" } },
-        "r3": { "type": "review", "settings": { "rating": 5, "quote": "Gentle, fast, and the install looked perfect.", "author": "Client" } }
+        "r1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Absolutely love my hair! So professional and clean.",
+            "author": "Client"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Best braids I've ever had. Booking again already.",
+            "author": "Client"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "Gentle, fast, and the install looked perfect.",
+            "author": "Client"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ],
       "settings": {
+        "eyebrow": "Reviews",
         "heading": "Loved by clients",
-        "button_label": "Follow on Instagram"
+        "subheading": "",
+        "instagram_embed": "",
+        "button_label": "Follow on Instagram",
+        "button_link": ""
       }
     }
   },
-  "order": ["hero", "services", "gallery", "reviews"]
+  "order": [
+    "hero",
+    "services",
+    "gallery",
+    "reviews"
+  ]
 }
