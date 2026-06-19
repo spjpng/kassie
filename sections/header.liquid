@@ -27,7 +27,7 @@
 
     <div class="header__actions">
       {%- if section.settings.show_book_button -%}
-        <a class="btn btn--primary btn--small" href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">
+        <a class="btn btn--primary btn--small header__book" href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">
           {{ section.settings.book_label }}
         </a>
       {%- endif -%}

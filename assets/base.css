@@ -134,6 +134,8 @@ p { margin: 0 0 1rem; }
 }
 .header__nav { display: none; }
 .header__actions { display: flex; align-items: center; gap: .75rem; }
+/* Book button hidden on mobile; the mobile menu keeps a Book link. Shown ≥990px. */
+.header__book { display: none; }
 
 .nav-list {
   list-style: none;
@@ -554,6 +556,7 @@ p { margin: 0 0 1rem; }
 
 @media (min-width: 990px) {
   .header__nav { display: block; }
+  .header__book { display: inline-block; }
   .menu-toggle { display: none; }
   .grid--4 { grid-template-columns: repeat(4, 1fr); }
   .slider__item { flex-basis: 32%; }
