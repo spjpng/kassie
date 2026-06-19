@@ -18,14 +18,13 @@
       <meta name="description" content="{{ page_description | escape }}">
     {%- endif -%}
 
-    {% comment %} Design tokens from theme settings {% endcomment %}
-    {%- liquid
-      assign font_heading = settings.font_heading
-      assign font_body = settings.font_body
-    -%}
+    {% comment %} Typography: Inter (loaded from Google Fonts) {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap">
+
+    {% comment %} Design tokens {% endcomment %}
     <style>
-      {{ font_heading | font_face: font_display: 'swap' }}
-      {{ font_body | font_face: font_display: 'swap' }}
       :root {
         --color-bg: {{ settings.color_background }};
         --color-surface: {{ settings.color_surface }};
@@ -34,9 +33,9 @@
         --color-silver: {{ settings.color_silver }};
         --color-border: {{ settings.color_border }};
         --color-button-text: {{ settings.color_button_text }};
-        --font-heading: {{ font_heading.family }}, {{ font_heading.fallback_families }};
-        --font-body: {{ font_body.family }}, {{ font_body.fallback_families }};
-        --font-heading-weight: {{ font_heading.weight }};
+        --font-heading: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+        --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+        --font-heading-weight: 600;
         --page-width: 1200px;
       }
     </style>
