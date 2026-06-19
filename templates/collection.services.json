@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-grid",
+      "settings": {
+        "layout": "list",
+        "button_label": "Book",
+        "heading": "Services",
+        "all_label": "All"
+      }
+    }
+  },
+  "order": ["main"]
+}

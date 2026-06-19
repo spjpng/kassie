@@ -32,7 +32,7 @@
           "type": "link",
           "settings": {
             "label": "Services",
-            "url": "/pages/services"
+            "url": "/collections/services"
           }
         },
         "gallery": {
