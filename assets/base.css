@@ -149,14 +149,28 @@ p { margin: 0 0 1rem; }
   font-size: .8rem;
 }
 
-.cart-link { position: relative; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text);
+}
+.icon-cart { width: 24px; height: 24px; display: block; }
 .cart-count {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  min-width: 17px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--color-silver);
   color: var(--color-button-text);
   border-radius: 999px;
-  font-size: .65rem;
-  padding: 0 .4rem;
-  margin-left: .25rem;
+  font-size: .62rem;
+  font-weight: 600;
+  padding: 0 .25rem;
 }
 
 .menu-toggle {
