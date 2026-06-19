@@ -25,8 +25,8 @@
     <div class="service-row__price">{{ block.settings.price }}</div>
     <div class="service-row__action">
       <a class="btn btn--ghost btn--small"
-         href="{{ block.settings.select_link | default: settings.booking_url | default: '#contact-form' }}">
-        {{ block.settings.select_label | default: 'Select' }}
+         href="{{ block.settings.select_link | default: settings.booking_url | default: '/pages/contact' }}">
+        {{ block.settings.select_label | default: 'Book' }}
       </a>
     </div>
   </div>

@@ -238,7 +238,12 @@ p { margin: 0 0 1rem; }
 .hero__content { position: relative; z-index: 2; max-width: 720px; margin-inline: auto; }
 .hero__content h1 { text-shadow: 0 2px 20px rgba(0,0,0,.5); }
 .hero__content p { color: var(--color-text); font-size: 1.1rem; }
-.hero__actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.hero__actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: nowrap; margin-top: 1.5rem; }
+.hero__actions .btn { flex: 1 1 0; min-width: 0; padding-left: .6rem; padding-right: .6rem; text-align: center; }
+@media (min-width: 600px) {
+  .hero__actions { flex-wrap: wrap; }
+  .hero__actions .btn { flex: 0 1 auto; padding-left: 1.75rem; padding-right: 1.75rem; }
+}
 
 /* Card grids -------------------------------------------------------------- */
 .grid {
