@@ -38,7 +38,7 @@
             {%- endfor -%}
           {%- endunless -%}
 
-          {%- if is_booking -%}
+          {%- if is_booking and section.settings.show_request_fields -%}
             <div class="field">
               <label for="BookDate">Preferred date</label>
               <input type="date" id="BookDate" name="properties[Preferred date]" required>
@@ -83,6 +83,13 @@
           </script>
         {%- endform -%}
 
+        {%- comment -%} Booking app widget (e.g. Cowlendar/Appointo) goes here via app blocks {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            <div class="product-app-block" {{ block.shopify_attributes }}>{% render block %}</div>
+          {%- endif -%}
+        {%- endfor -%}
+
         {%- if product.description != blank -%}
           <div class="rte" style="margin-top:1.5rem">{{ product.description }}</div>
         {%- endif -%}
@@ -116,12 +123,22 @@
       "default": "Book & pay deposit"
     },
     {
+      "type": "checkbox",
+      "id": "show_request_fields",
+      "label": "Show preferred date/time fields",
+      "info": "Turn OFF if you use a booking app block below (it provides its own calendar).",
+      "default": true
+    },
+    {
       "type": "textarea",
       "id": "deposit_note",
       "label": "Deposit note",
       "info": "Shown on booking products. Per-product override: metafield custom.deposit_note.",
       "default": "A non-refundable deposit secures your appointment and goes toward your total. Balance due at your visit."
     }
+  ],
+  "blocks": [
+    { "type": "@app" }
   ]
 }
 {% endschema %}
