@@ -1,0 +1,23 @@
+{%- comment -%}
+  Renders a before/after pair. Accepts: before, after, before_label, after_label, caption
+{%- endcomment -%}
+<div class="before-after">
+  <div class="before-after__pair">
+    <figure>
+      <span class="before-after__tag">{{ before_label | default: 'Before' }}</span>
+      {%- if before -%}
+        <img src="{{ before | image_url: width: 500 }}" alt="{{ caption | default: 'Before' | escape }}" loading="lazy" width="500" height="667">
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag }}
+      {%- endif -%}
+    </figure>
+    <figure>
+      <span class="before-after__tag">{{ after_label | default: 'After' }}</span>
+      {%- if after -%}
+        <img src="{{ after | image_url: width: 500 }}" alt="{{ caption | default: 'After' | escape }}" loading="lazy" width="500" height="667">
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag }}
+      {%- endif -%}
+    </figure>
+  </div>
+</div>

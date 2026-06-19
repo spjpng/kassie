@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "policies": {
+      "type": "policies",
+      "blocks": {
+        "health": { "type": "policy", "settings": { "title": "Health Policy", "content": "<p>Please reschedule if you are unwell or showing symptoms of illness. Come with freshly washed, detangled hair unless a wash is booked.</p>" } },
+        "cancellations": { "type": "policy", "settings": { "title": "Cancellations", "content": "<p>Cancellations must be made at least 48 hours in advance. Deposits are non-refundable.</p>" } },
+        "extra_guest": { "type": "policy", "settings": { "title": "Extra Guest", "content": "<p>To keep appointments on schedule, please do not bring extra guests or children to your appointment.</p>" } },
+        "deposits": { "type": "policy", "settings": { "title": "Deposits", "content": "<p>A non-refundable deposit is required to book. It is applied toward your total service cost.</p>" } },
+        "late": { "type": "policy", "settings": { "title": "Late Arrivals", "content": "<p>There is a 15-minute grace period. Arrivals later than 15 minutes may be rescheduled and forfeit the deposit.</p>" } },
+        "travel": { "type": "policy", "settings": { "title": "Travel Fee", "content": "<p>Mobile and travel appointments may incur an additional fee based on distance. Ask for a quote.</p>" } },
+        "reschedule": { "type": "policy", "settings": { "title": "Reschedule", "content": "<p>One reschedule is allowed with 48 hours' notice. Your deposit transfers to the new date.</p>" } }
+      },
+      "block_order": ["health", "cancellations", "extra_guest", "deposits", "late", "travel", "reschedule"],
+      "settings": {
+        "heading": "Salon policies"
+      }
+    }
+  },
+  "order": ["policies"]
+}

@@ -1,0 +1,51 @@
+<section class="section">
+  <div class="page-width" style="max-width:820px">
+    <div class="section__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      <details class="policy" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
+        <summary>{{ block.settings.title }}</summary>
+        <div class="policy__content rte">{{ block.settings.content }}</div>
+      </details>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Policies",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Policies" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Salon policies" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Please review before booking." }
+  ],
+  "blocks": [
+    {
+      "type": "policy",
+      "name": "Policy",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Policy title", "default": "Health Policy" },
+        { "type": "richtext", "id": "content", "label": "Policy details", "default": "<p>Add the details of this policy here.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policies",
+      "blocks": [
+        { "type": "policy", "settings": { "title": "Health Policy" } },
+        { "type": "policy", "settings": { "title": "Cancellations" } },
+        { "type": "policy", "settings": { "title": "Extra Guest" } },
+        { "type": "policy", "settings": { "title": "Deposits" } },
+        { "type": "policy", "settings": { "title": "Late Arrivals" } },
+        { "type": "policy", "settings": { "title": "Travel Fee" } },
+        { "type": "policy", "settings": { "title": "Reschedule" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,87 @@
+<header class="header">
+  <div class="page-width header__inner">
+    <a class="header__logo" href="{{ routes.root_url }}">
+      {%- if settings.logo -%}
+        <img
+          src="{{ settings.logo | image_url: width: settings.logo_width | times: 2 }}"
+          alt="{{ settings.business_name | escape }}"
+          width="{{ settings.logo_width }}"
+          style="width: {{ settings.logo_width }}px;">
+      {%- else -%}
+        <span class="header__logo-text">{{ settings.business_name }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" aria-label="Primary">
+      <ul class="nav-list">
+        {%- for link in section.settings.menu.links -%}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      {%- if section.settings.show_book_button -%}
+        <a class="btn btn--primary btn--small" href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">
+          {{ section.settings.book_label }}
+        </a>
+      {%- endif -%}
+      <a class="cart-link" href="{{ routes.cart_url }}">
+        {{ 'cart.title' | t }}
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-controls="MobileNav"
+        aria-label="{{ 'general.menu' | t }}">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-nav" id="MobileNav" aria-label="Mobile">
+    <ul>
+      {%- for link in section.settings.menu.links -%}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {%- endfor -%}
+      {%- if section.settings.show_book_button -%}
+        <li><a href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">{{ section.settings.book_label }}</a></li>
+      {%- endif -%}
+    </ul>
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_book_button",
+      "label": "Show booking button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "book_label",
+      "label": "Booking button label",
+      "default": "Book now"
+    },
+    {
+      "type": "url",
+      "id": "book_link",
+      "label": "Booking button link",
+      "info": "Falls back to the default booking URL in Theme settings > Contact & Social."
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "gallery": {
+      "type": "gallery-slider",
+      "blocks": {
+        "g_knotless": { "type": "group", "settings": { "title": "Knotless" } },
+        "p_knotless1": { "type": "pair", "settings": { "caption": "Small knotless" } },
+        "p_knotless2": { "type": "pair", "settings": { "caption": "Medium knotless" } },
+        "g_sewin": { "type": "group", "settings": { "title": "Sew-In" } },
+        "p_sewin1": { "type": "pair", "settings": { "caption": "Full sew-in" } },
+        "g_wig": { "type": "group", "settings": { "title": "Wig Install" } },
+        "p_wig1": { "type": "pair", "settings": { "caption": "Glueless install" } }
+      },
+      "block_order": [
+        "g_knotless", "p_knotless1", "p_knotless2",
+        "g_sewin", "p_sewin1",
+        "g_wig", "p_wig1"
+      ],
+      "settings": {
+        "heading": "Our work"
+      }
+    }
+  },
+  "order": ["gallery"]
+}

@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "menu": {
+      "type": "service-menu",
+      "blocks": {
+        "c_bundle": { "type": "category", "settings": { "title": "Bundle Deal" } },
+        "s_bundle1": { "type": "service", "settings": { "name": "Wash, blow dry & style", "duration": "2 hrs", "price": "$120", "notes": "Includes deep conditioning." } },
+        "c_knotless": { "type": "category", "settings": { "title": "Knotless" } },
+        "s_knotless1": { "type": "service", "settings": { "name": "Small knotless", "duration": "6–8 hrs", "price": "$220", "notes": "Must book 2 weeks in advance. Non-refundable deposit required." } },
+        "s_knotless2": { "type": "service", "settings": { "name": "Medium knotless", "duration": "5–6 hrs", "price": "$180", "notes": "Non-refundable deposit required." } },
+        "c_natural": { "type": "category", "settings": { "title": "Natural" } },
+        "s_natural1": { "type": "service", "settings": { "name": "Silk press", "duration": "1.5 hrs", "price": "$85" } },
+        "c_quickweave": { "type": "category", "settings": { "title": "Quick Weave" } },
+        "s_quickweave1": { "type": "service", "settings": { "name": "Quick weave install", "duration": "2.5 hrs", "price": "$130", "notes": "Hair not included." } },
+        "c_sewin": { "type": "category", "settings": { "title": "Sew-In" } },
+        "s_sewin1": { "type": "service", "settings": { "name": "Full sew-in", "duration": "3 hrs", "price": "$160", "notes": "Hair not included." } },
+        "c_wig": { "type": "category", "settings": { "title": "Wig Install" } },
+        "s_wig1": { "type": "service", "settings": { "name": "Glueless wig install", "duration": "1.5 hrs", "price": "$110" } }
+      },
+      "block_order": [
+        "c_bundle", "s_bundle1",
+        "c_knotless", "s_knotless1", "s_knotless2",
+        "c_natural", "s_natural1",
+        "c_quickweave", "s_quickweave1",
+        "c_sewin", "s_sewin1",
+        "c_wig", "s_wig1"
+      ],
+      "settings": {
+        "heading": "Service menu",
+        "footnote": "A non-refundable deposit is required to secure all appointments. Deposits go toward your service total."
+      }
+    }
+  },
+  "order": ["menu"]
+}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "about": {
+      "type": "about",
+      "settings": {
+        "heading": "Meet your stylist",
+        "bio": "<p>Hi, I'm Kassie — the hands behind ECB Stylez. I specialize in protective styles, braids, and installs with a clean, modern finish. Add your story, training, and what makes your chair the one to book.</p>",
+        "button_label": "Book with me"
+      }
+    }
+  },
+  "order": ["about"]
+}

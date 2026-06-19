@@ -1,0 +1,26 @@
+{%- comment -%}
+  Renders a product card. Accepts: product
+{%- endcomment -%}
+<a class="card product-card" href="{{ product.url }}">
+  <div class="card__media">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        srcset="{{ product.featured_image | image_url: width: 300 }} 300w, {{ product.featured_image | image_url: width: 600 }} 600w, {{ product.featured_image | image_url: width: 900 }} 900w"
+        sizes="(min-width: 990px) 25vw, 50vw"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="600"
+        height="450">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'card__media' }}
+    {%- endif -%}
+  </div>
+  <div class="card__body">
+    <h3 class="product-card__title">{{ product.title }}</h3>
+    {% render 'price', product: product %}
+    {%- unless product.available -%}
+      <p>{{ 'products.sold_out' | t }}</p>
+    {%- endunless -%}
+  </div>
+</a>

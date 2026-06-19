@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "contact": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Get in touch",
+        "instagram_handle": "@theecbstylez"
+      }
+    }
+  },
+  "order": ["contact"]
+}

@@ -1,0 +1,48 @@
+<section class="section">
+  <div class="page-width">
+    <div class="about">
+      <div class="about__media">
+        {%- if product.featured_image -%}
+          <img src="{{ product.featured_image | image_url: width: 900 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="900" height="900">
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'about__media' }}
+        {%- endif -%}
+      </div>
+      <div class="about__text">
+        <h1>{{ product.title }}</h1>
+        <p class="product-card__price" style="font-size:1.4rem">{% render 'price', product: product %}</p>
+
+        {%- form 'product', product, id: 'ProductForm' -%}
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <div class="field">
+                <label for="Option-{{ option.position }}">{{ option.name }}</label>
+                <select id="Option-{{ option.position }}" name="options[{{ option.name | escape }}]">
+                  {%- for value in option.values -%}
+                    <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>{{ value }}</option>
+                  {%- endfor -%}
+                </select>
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" name="add" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}{{ 'products.add_to_cart' | t }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+          </button>
+        {%- endform -%}
+
+        {%- if product.description != blank -%}
+          <div class="rte" style="margin-top:1.5rem">{{ product.description }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": []
+}
+{% endschema %}

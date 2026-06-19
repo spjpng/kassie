@@ -1,0 +1,83 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    {%- liquid
+      assign open_category = false
+    -%}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'category' -%}
+          {%- if open_category -%}</div>{%- endif -%}
+          <div class="service-category" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.title }}{%- if block.settings.note != blank -%}<span class="service-row__notes">{{ block.settings.note }}</span>{%- endif -%}</h3>
+          {%- assign open_category = true -%}
+        {%- when 'service' -%}
+          {% render 'service-row', block: block %}
+      {%- endcase -%}
+    {%- endfor -%}
+    {%- if open_category -%}</div>{%- endif -%}
+
+    {%- if section.settings.footnote != blank -%}
+      <p class="service-row__notes" style="margin-top:2rem">{{ section.settings.footnote }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service menu",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Services" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Service menu" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Browse services by category. Select a service to begin booking." },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "info": "Shown below the menu, e.g. global deposit / booking terms." }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category heading",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Category name", "default": "Knotless" },
+        { "type": "text", "id": "note", "label": "Category note" }
+      ]
+    },
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Service name", "default": "Medium knotless" },
+        { "type": "text", "id": "duration", "label": "Duration", "default": "5–6 hrs" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$180" },
+        { "type": "textarea", "id": "notes", "label": "Notes", "info": "e.g. \"Must book 2 weeks in advance\", deposit terms." },
+        { "type": "text", "id": "select_label", "label": "Button label", "default": "Select" },
+        { "type": "url", "id": "select_link", "label": "Booking link for this service", "info": "Falls back to the default booking URL, then the contact form." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service menu",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Bundle Deal" } },
+        { "type": "service" },
+        { "type": "category", "settings": { "title": "Knotless" } },
+        { "type": "service" },
+        { "type": "service" },
+        { "type": "category", "settings": { "title": "Natural" } },
+        { "type": "service" },
+        { "type": "category", "settings": { "title": "Quick Weave" } },
+        { "type": "service" },
+        { "type": "category", "settings": { "title": "Sew-In" } },
+        { "type": "service" },
+        { "type": "category", "settings": { "title": "Wig Install" } },
+        { "type": "service" }
+      ]
+    }
+  ]
+}
+{% endschema %}

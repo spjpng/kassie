@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection-grid",
+      "settings": {
+        "heading": "Shop",
+        "all_label": "All"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="slider">
+      {%- for block in section.blocks -%}
+        <div class="slider__item" {{ block.shopify_attributes }}>
+          {% render 'before-after',
+            before: block.settings.before_image,
+            after: block.settings.after_image,
+            caption: block.settings.caption %}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="social-cta">
+        <a class="btn btn--ghost" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Gallery teaser",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Gallery" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Before & after" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View full gallery" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "pair",
+      "name": "Before/after",
+      "settings": [
+        { "type": "image_picker", "id": "before_image", "label": "Before image" },
+        { "type": "image_picker", "id": "after_image", "label": "After image" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    { "name": "Gallery teaser", "blocks": [{ "type": "pair" }, { "type": "pair" }, { "type": "pair" }] }
+  ]
+}
+{% endschema %}

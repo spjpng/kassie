@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renders a product price. Accepts: product
+{%- endcomment -%}
+{%- liquid
+  assign target = product
+  assign price = target.price
+-%}
+<span class="product-card__price">
+  {%- if target.compare_at_price > price -%}
+    <s>{{ target.compare_at_price | money }}</s>
+  {%- endif -%}
+  {%- if target.price_varies -%}
+    {{ 'products.from' | t }} {{ price | money }}
+  {%- else -%}
+    {{ price | money }}
+  {%- endif -%}
+</span>
