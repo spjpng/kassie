@@ -3,6 +3,11 @@
    Silver & black, mobile-first. Color/font tokens injected in theme.liquid.
    ========================================================================== */
 
+/* Signature butterfly accent, reused as a CSS mask so it inherits color */
+:root {
+  --butterfly: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 42C56 30 70 18 82 22 92 25 92 40 78 46 92 50 90 66 78 70 66 74 54 60 50 52ZM50 42C44 30 30 18 18 22 8 25 8 40 22 46 8 50 10 66 22 70 34 74 46 60 50 52Z'/%3E%3Cellipse cx='50' cy='52' rx='2.4' ry='13'/%3E%3Cpath d='M50 40C48 33 45 30 42 27' stroke='black' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3Cpath d='M50 40C52 33 55 30 58 27' stroke='black' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -80,6 +85,7 @@ p { margin: 0 0 1rem; }
 
 /* Buttons ----------------------------------------------------------------- */
 .btn {
+  position: relative;
   display: inline-block;
   font-family: var(--font-heading);
   font-weight: 600;
@@ -93,6 +99,21 @@ p { margin: 0 0 1rem; }
   transition: transform .15s ease, background .2s ease, color .2s ease;
 }
 .btn:hover { transform: translateY(-1px); }
+/* Signature butterfly accent in the top-right corner; inherits the button's text color */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 11px;
+  height: 11px;
+  background-color: currentColor;
+  -webkit-mask: var(--butterfly) no-repeat center / contain;
+  mask: var(--butterfly) no-repeat center / contain;
+  opacity: .45;
+  pointer-events: none;
+}
+.btn:hover::after { opacity: .7; }
 
 .btn--primary {
   background: linear-gradient(135deg, #f4f4f6 0%, var(--color-silver) 55%, #8d8d92 100%);
@@ -379,17 +400,18 @@ p { margin: 0 0 1rem; }
   border: 2px solid var(--color-bg);
   box-shadow: 0 2px 10px rgba(0, 0, 0, .4);
 }
+/* Butterfly drag handle instead of a plain circle */
 .ba__handle::before {
-  content: "‹ ›";
+  content: "";
   position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-button-text);
-  font-size: .85rem;
-  font-weight: 700;
-  letter-spacing: -1px;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-button-text);
+  -webkit-mask: var(--butterfly) no-repeat center / contain;
+  mask: var(--butterfly) no-repeat center / contain;
 }
 .ba__range {
   position: absolute;
