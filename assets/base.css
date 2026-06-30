@@ -93,7 +93,7 @@ p { margin: 0 0 1rem; }
   letter-spacing: .08em;
   font-size: .85rem;
   padding: .85rem 1.75rem;
-  border-radius: 2px;
+  border-radius: var(--btn-radius);
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform .15s ease, background .2s ease, color .2s ease;
@@ -115,7 +115,7 @@ p { margin: 0 0 1rem; }
 .btn:hover::after { transform: rotate(-10deg) scale(1.08); }
 
 .btn--primary {
-  background: linear-gradient(135deg, #f4f4f6 0%, var(--color-silver) 55%, #8d8d92 100%);
+  background: linear-gradient(var(--btn-gradient-angle), var(--btn-gradient-start) 0%, var(--color-silver) 55%, var(--btn-gradient-end) 100%);
   color: var(--color-button-text);
 }
 .btn--primary:hover { color: var(--color-button-text); filter: brightness(1.05); }
