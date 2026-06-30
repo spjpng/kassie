@@ -1,9 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "logo_width": 160,
     "business_name": "ECB Stylez",
     "tagline": "Premium braids & installs",
-    "color_background": "#0a0a0a",
+    "color_background": "#000000",
     "color_surface": "#141414",
     "color_text": "#f2f2f2",
     "color_muted": "#a8a8a8",
@@ -12,8 +21,23 @@
     "color_button_text": "#0a0a0a",
     "font_heading": "assistant_n4",
     "font_body": "assistant_n4",
-    "location_text": "By appointment only",
-    "business_hours": "Mon–Fri: 9am–7pm\nSat: 9am–5pm\nSun: Closed"
+    "instagram_url": "https://www.instagram.com/theecbstylez/",
+    "location_text": "Delaware State University x New Castle",
+    "business_hours": "Mon–Sat: 9am–10pm\nSun: Closed",
+    "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.412609504655!2d-75.6137305!3d39.6563238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c703f8defc6373%3A0x14a2216e5571d72c!2sHooters!5e0!3m2!1sen!2sus!4v1781846802839!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+    "content_for_index": [],
+    "blocks": {
+      "9278379683843197553": {
+        "type": "shopify://apps/appointo/blocks/app-embed/8e9086b8-9c22-4cd3-b1d1-0967727a5d97",
+        "disabled": false,
+        "settings": {}
+      },
+      "3886181796285292942": {
+        "type": "shopify://apps/cowlendar-booking/blocks/app-embed/6d8b8f6a-9b3c-42b8-b2e6-a758c38d45bf",
+        "disabled": true,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Default": {}

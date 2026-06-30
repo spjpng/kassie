@@ -1,10 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
   "sections": {
     "header": {
-      "type": "header"
+      "type": "header",
+      "blocks": {
+        "home": {
+          "type": "link",
+          "settings": {
+            "label": "Home",
+            "url": "/"
+          }
+        },
+        "shop": {
+          "type": "link",
+          "settings": {
+            "label": "Shop",
+            "url": "/collections/all"
+          }
+        },
+        "services": {
+          "type": "link",
+          "settings": {
+            "label": "Services",
+            "url": "/collections/services"
+          }
+        },
+        "gallery": {
+          "type": "link",
+          "settings": {
+            "label": "Gallery",
+            "url": "/pages/gallery"
+          }
+        },
+        "about": {
+          "type": "link",
+          "settings": {
+            "label": "About",
+            "url": "/pages/about"
+          }
+        },
+        "contact": {
+          "type": "link",
+          "settings": {
+            "label": "Contact",
+            "url": "/pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "home",
+        "shop",
+        "services",
+        "gallery",
+        "about",
+        "contact"
+      ],
+      "settings": {
+        "show_book_button": true,
+        "book_label": "Book now",
+        "book_link": "",
+        "show_account": true,
+        "account_label": "Member Login"
+      }
     }
   },
-  "order": ["header"]
+  "order": [
+    "header"
+  ]
 }

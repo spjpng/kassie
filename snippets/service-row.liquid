@@ -1,7 +1,17 @@
 {%- comment -%}
-  Renders one service row. Accepts a block (settings: name, duration, price, notes, select_label, select_link)
+  Renders one service row. Accepts a block (settings: image, name, duration, price, notes, select_label, select_link)
 {%- endcomment -%}
 <div class="service-row" {{ block.shopify_attributes }}>
+  {%- if block.settings.image -%}
+    <div class="service-row__media">
+      <img
+        src="{{ block.settings.image | image_url: width: 200 }}"
+        alt="{{ block.settings.name | escape }}"
+        loading="lazy"
+        width="200"
+        height="200">
+    </div>
+  {%- endif -%}
   <div class="service-row__info">
     <div class="service-row__name">{{ block.settings.name }}</div>
     {%- if block.settings.duration != blank -%}
@@ -11,11 +21,13 @@
       <div class="service-row__notes">{{ block.settings.notes }}</div>
     {%- endif -%}
   </div>
-  <div class="service-row__price">{{ block.settings.price }}</div>
-  <div class="service-row__action">
-    <a class="btn btn--ghost btn--small"
-       href="{{ block.settings.select_link | default: settings.booking_url | default: '#contact-form' }}">
-      {{ block.settings.select_label | default: 'Select' }}
-    </a>
+  <div class="service-row__end">
+    <div class="service-row__price">{{ block.settings.price }}</div>
+    <div class="service-row__action">
+      <a class="btn btn--ghost btn--small"
+         href="{{ block.settings.select_link | default: settings.booking_url | default: '/pages/contact' }}">
+        {{ block.settings.select_label | default: 'Book' }}
+      </a>
+    </div>
   </div>
 </div>

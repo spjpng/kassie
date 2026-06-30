@@ -14,14 +14,10 @@
       "settings": {
         "layout": "list",
         "button_label": "Book",
-        "heading": "Shop",
-        "subheading": "",
-        "filter_menu": "",
+        "heading": "Services",
         "all_label": "All"
       }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main"]
 }

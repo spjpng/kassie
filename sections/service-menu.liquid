@@ -50,11 +50,12 @@
       "type": "service",
       "name": "Service",
       "settings": [
+        { "type": "image_picker", "id": "image", "label": "Service photo (square)", "info": "Optional. Shown as a square thumbnail. Best with a 1:1 image." },
         { "type": "text", "id": "name", "label": "Service name", "default": "Medium knotless" },
         { "type": "text", "id": "duration", "label": "Duration", "default": "5–6 hrs" },
         { "type": "text", "id": "price", "label": "Price", "default": "$180" },
         { "type": "textarea", "id": "notes", "label": "Notes", "info": "e.g. \"Must book 2 weeks in advance\", deposit terms." },
-        { "type": "text", "id": "select_label", "label": "Button label", "default": "Select" },
+        { "type": "text", "id": "select_label", "label": "Button label", "default": "Book" },
         { "type": "url", "id": "select_link", "label": "Booking link for this service", "info": "Falls back to the default booking URL, then the contact form." }
       ]
     }

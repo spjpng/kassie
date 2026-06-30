@@ -1,0 +1,31 @@
+{%- comment -%}
+  Renders a product as a Booksy-style list row. Accepts: product, button_label
+{%- endcomment -%}
+<div class="service-row">
+  <div class="service-row__media">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 200 }}"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="200"
+        height="200">
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {%- endif -%}
+  </div>
+  <div class="service-row__info">
+    <a href="{{ product.url }}" class="service-row__name">{{ product.title }}</a>
+    {%- if product.type != blank -%}
+      <div class="service-row__meta">{{ product.type }}</div>
+    {%- endif -%}
+  </div>
+  <div class="service-row__end">
+    <div class="service-row__price">{% render 'price', product: product %}</div>
+    <div class="service-row__action">
+      <a class="btn btn--ghost btn--small" href="{{ product.url }}">
+        {{ button_label | default: 'Book' }}
+      </a>
+    </div>
+  </div>
+</div>

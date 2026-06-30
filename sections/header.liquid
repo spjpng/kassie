@@ -14,21 +14,32 @@
 
     <nav class="header__nav" aria-label="Primary">
       <ul class="nav-list">
-        {%- for link in section.settings.menu.links -%}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'link' -%}
+            <li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
+          {%- endif -%}
         {%- endfor -%}
+        {%- if section.settings.show_account -%}
+          <li><a href="{{ routes.account_url }}">{{ section.settings.account_label }}</a></li>
+        {%- endif -%}
       </ul>
     </nav>
 
     <div class="header__actions">
       {%- if section.settings.show_book_button -%}
-        <a class="btn btn--primary btn--small" href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">
+        <a class="btn btn--primary btn--small header__book" href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">
           {{ section.settings.book_label }}
         </a>
       {%- endif -%}
-      <a class="cart-link" href="{{ routes.cart_url }}">
-        {{ 'cart.title' | t }}
-        <span class="cart-count">{{ cart.item_count }}</span>
+      <a class="cart-link" href="{{ routes.cart_url }}" aria-label="{{ 'cart.title' | t }}">
+        <svg class="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
       </a>
       <button
         class="menu-toggle"
@@ -44,9 +55,14 @@
 
   <nav class="mobile-nav" id="MobileNav" aria-label="Mobile">
     <ul>
-      {%- for link in section.settings.menu.links -%}
-        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'link' -%}
+          <li {{ block.shopify_attributes }}><a href="{{ block.settings.url | default: '#' }}">{{ block.settings.label }}</a></li>
+        {%- endif -%}
       {%- endfor -%}
+      {%- if section.settings.show_account -%}
+        <li><a href="{{ routes.account_url }}">{{ section.settings.account_label }}</a></li>
+      {%- endif -%}
       {%- if section.settings.show_book_button -%}
         <li><a href="{{ section.settings.book_link | default: settings.booking_url | default: '#' }}">{{ section.settings.book_label }}</a></li>
       {%- endif -%}
@@ -58,12 +74,6 @@
 {
   "name": "Header",
   "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Navigation menu",
-      "default": "main-menu"
-    },
     {
       "type": "checkbox",
       "id": "show_book_button",
@@ -81,6 +91,32 @@
       "id": "book_link",
       "label": "Booking button link",
       "info": "Falls back to the default booking URL in Theme settings > Contact & Social."
+    },
+    {
+      "type": "header",
+      "content": "Member account"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show Member Login link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "account_label",
+      "label": "Member Login label",
+      "default": "Member Login"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Nav link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Page" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
     }
   ]
 }
