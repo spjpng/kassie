@@ -91,6 +91,47 @@
     ]
   },
   {
+    "name": "Buttons",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary button gradient"
+      },
+      {
+        "type": "color",
+        "id": "btn_gradient_start",
+        "label": "Gradient start color",
+        "default": "#f4f4f6"
+      },
+      {
+        "type": "color",
+        "id": "btn_gradient_end",
+        "label": "Gradient end color",
+        "default": "#8d8d92"
+      },
+      {
+        "type": "range",
+        "id": "btn_gradient_angle",
+        "min": 0,
+        "max": 360,
+        "step": 5,
+        "unit": "deg",
+        "label": "Gradient angle",
+        "default": 135
+      },
+      {
+        "type": "range",
+        "id": "btn_radius",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Button corner radius",
+        "default": 2
+      }
+    ]
+  },
+  {
     "name": "Typography",
     "settings": [
       {
