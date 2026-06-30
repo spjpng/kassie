@@ -10,7 +10,7 @@
 {
   "current": {
     "logo_width": 160,
-    "business_name": "ECB Stylez",
+    "business_name": "CB Stylez",
     "tagline": "Premium braids & installs",
     "color_background": "#000000",
     "color_surface": "#141414",
@@ -22,8 +22,9 @@
     "font_heading": "assistant_n4",
     "font_body": "assistant_n4",
     "instagram_url": "https://www.instagram.com/theecbstylez/",
+    "booking_url": "https://theecbstylez.as.me/schedule/cb2ccd9a",
     "location_text": "Delaware State University x New Castle",
-    "business_hours": "Mon–Sat: 9am–10pm\nSun: Closed",
+    "business_hours": "Mon–Sat: 7am–9:30pm\nSun: Closed",
     "map_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6143.412609504655!2d-75.6137305!3d39.6563238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c703f8defc6373%3A0x14a2216e5571d72c!2sHooters!5e0!3m2!1sen!2sus!4v1781846802839!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
     "btn_gradient_start": "#EB074B",
     "btn_gradient_end": "#EB074B",
