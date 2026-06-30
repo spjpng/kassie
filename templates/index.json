@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "image": "shopify://shop_images/9AE810DB-5BB5-4A97-B29E-0517A074340B_1_105_c.jpg",
         "eyebrow": "ECB Stylez",
         "heading": "Braids & installs, done right",
         "subheading": "Premium hair styling with a clean, modern finish. Book your appointment today.",
