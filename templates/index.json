@@ -28,7 +28,8 @@
         "s1": {
           "type": "service",
           "settings": {
-            "title": "Knotless braids",
+            "image": "shopify://shop_images/16CF2149-5DAF-4BFE-8755-787D24700D5F_1_105_c.jpg",
+            "title": "Quick Weave",
             "text": "Lightweight, natural-looking, long-lasting.",
             "link": ""
           }
