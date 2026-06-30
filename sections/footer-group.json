@@ -21,6 +21,13 @@
             "url": "/pages/services"
           }
         },
+        "hair_guide": {
+          "type": "link",
+          "settings": {
+            "label": "Hair Guide",
+            "url": "/pages/hair-guide"
+          }
+        },
         "gallery": {
           "type": "link",
           "settings": {
@@ -52,6 +59,7 @@
       },
       "block_order": [
         "services",
+        "hair_guide",
         "gallery",
         "about",
         "policies",

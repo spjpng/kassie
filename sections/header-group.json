@@ -35,6 +35,13 @@
             "url": "/collections/services"
           }
         },
+        "hair_guide": {
+          "type": "link",
+          "settings": {
+            "label": "Hair Guide",
+            "url": "/pages/hair-guide"
+          }
+        },
         "gallery": {
           "type": "link",
           "settings": {
@@ -61,6 +68,7 @@
         "home",
         "shop",
         "services",
+        "hair_guide",
         "gallery",
         "about",
         "contact"
