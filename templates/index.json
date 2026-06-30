@@ -18,8 +18,8 @@
         "subheading": "Premium hair styling with a clean, modern finish. Book your appointment today.",
         "button_label": "Book now",
         "button_link": "shopify://collections/all",
-        "button2_label": "View services",
-        "button2_link": ""
+        "button2_label": "view shop",
+        "button2_link": "shopify://collections/merch"
       }
     },
     "services": {
@@ -37,6 +37,7 @@
         "s2": {
           "type": "service",
           "settings": {
+            "image": "shopify://shop_images/new_castle_de_cb_kassie.jpg",
             "title": "Sew-Ins",
             "text": "Seamless installs with a flawless finish.",
             "link": ""
