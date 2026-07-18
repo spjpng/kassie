@@ -76,6 +76,14 @@
             "caption": "Quick - Weave"
           }
         },
+        "pair_MeEGnN": {
+          "type": "pair",
+          "settings": {
+            "before_image": "shopify://shop_images/DSC0464.jpg",
+            "after_image": "shopify://shop_images/QUICK_WEAVE.jpg",
+            "caption": "Quick - Weave"
+          }
+        },
         "g2": {
           "type": "pair",
           "settings": {
@@ -91,6 +99,7 @@
       },
       "block_order": [
         "g1",
+        "pair_MeEGnN",
         "g2",
         "g3"
       ],
