@@ -28,7 +28,7 @@
         "s1": {
           "type": "service",
           "settings": {
-            "image": "shopify://shop_images/16CF2149-5DAF-4BFE-8755-787D24700D5F_1_105_c.jpg",
+            "image": "shopify://shop_images/QUICK_WEAVE_2.jpg",
             "title": "Quick Weave",
             "text": "Lightweight, natural-looking, long-lasting.",
             "link": ""
@@ -71,7 +71,7 @@
         "g1": {
           "type": "pair",
           "settings": {
-            "caption": "Knotless"
+            "caption": "Quick - Weave"
           }
         },
         "g2": {
