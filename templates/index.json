@@ -71,6 +71,8 @@
         "g1": {
           "type": "pair",
           "settings": {
+            "before_image": "shopify://shop_images/IMG_4419.jpg",
+            "after_image": "shopify://shop_images/QUICK_WEAVE_2_6ec014f3-ae83-49f4-8717-56390e3a2537.jpg",
             "caption": "Quick - Weave"
           }
         },
